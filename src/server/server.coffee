@@ -8,9 +8,9 @@ app = express()
 
 app.use('/', express.static(__dirname + '/../client'))
 
-# Fetch a list of Zats 
-app.get '/zats/:lat/:long', (req, res) ->
-    pg.connect conString, (err, client, done) ->
+pg.connect conString, (err, client, done) ->
+    # Fetch a list of Zats 
+    app.get '/zats/:lat/:long', (req, res) ->
         if err
             res.send
                 errMsg: "Well, that didn't work",
